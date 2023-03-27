@@ -68,18 +68,6 @@ entity.Debug.OnDeath = function()
     print("Player has died")
 end
 
-entity.Debug.OnUseCrucifix = function()
-    local Achievements = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
-
--- Creates and displays your custom achievement
-Achievements.Get({
-    Title = "I Can't Look Like Fear",
-    Desc = "You Death",
-    Reason = "Use Crucifix On Eyesing",
-    Image = "12912148272",
-})
-    end
-
 ---====== Run entity ======---
 
 Spawner.runEntity(entity)
