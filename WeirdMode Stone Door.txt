@@ -15,7 +15,7 @@ local SelfModules = {
     Functions = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Functions.lua"))()
 }
 local Assets = {
-    Door = LoadCustomInstance("https://github.com/NormalBaran/Doors-WeirdMode/blob/main/Door.rbxm")
+    Door = LoadCustomInstance("https://github.com/NormalBaran/Doors-WeirdMode/blob/main/Door.rbxm?raw=true")
 }
 
 local DoorReplicator = {}
