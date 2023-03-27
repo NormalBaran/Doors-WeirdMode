@@ -68,7 +68,7 @@ entityTable.Debug.OnEntitySpawned = function()
 end
 
 entityTable.Debug.OnEntityDespawned = function()
-    local Achievements = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
+        local Achievements = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
 Achievements.Get({
     Title = "Don't Be FEAR",
     Desc = "Why Are You Fear?!",
