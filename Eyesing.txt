@@ -1,69 +1,42 @@
+firesignal(game:GetService("ReplicatedStorage").EntityInfo.Caption.OnClientEvent, 'What Thats Sound?',true,5)
+wait(0.5)
 ---====== Define spawner ======---
-
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/Source.lua"))()
 
 ---====== Create entity ======---
 
-local entity = Spawner.createEntity({
+local entityTable = Spawner.createEntity({
     CustomName = "Eyesing",
     Model = "rbxassetid://12913890947",
     Speed = 50,
-    MoveDelay = 1,
-    HeightOffset = 0,
+    MoveDelay = 5,
+    HeightOffset = 1,
     CanKill = false,
     KillRange = 50,
     SpawnInFront = false,
-    ShatterLights = false,
+    ShatterLights = true,
     FlickerLights = {
         Enabled = true,
-        Duration = 50
+        Duration = 10
     },
     Cycles = {
         Min = 2,
-        Max = 5,
+        Max = 4,
         Delay = 2
     },
     CamShake = {
         Enabled = true,
-        Values = {1.5, 20, 0.1, 1},
+        Values = {3.5, 20, 0.1, 1},
         Range = 100
     },
     ResistCrucifix = false,
     BreakCrucifix = true,
-    DeathMessage = {"Custom", "death", "message", "goes", "here."},
-    IsCuriousLight = false
+    DeathMessage = {},
+    IsCuriousLight = true
 })
 
 ---====== Debug ======---
-
-entity.Debug.OnEntitySpawned = function()
-    print("Entity has spawned")
-end
-
-entity.Debug.OnEntityDespawned = function()
-    print("Entity has despawned")
-end
-
-entity.Debug.OnEntityStartMoving = function()
-    print("Entity started moving")
-end
-
-entity.Debug.OnEntityFinishedRebound = function()
-    print("Entity finished rebound")
-end
-
-entity.Debug.OnEntityEnteredRoom = function(room)
-    print("Entity entered room:", room)
-end
-
-entity.Debug.OnLookAtEntity = function()
-    print("Player looking at entity")
-end
-
-entity.Debug.OnDeath = function()
-    print("Player has died")
-end
-
 --[[
     NOTE: By overwriting 'OnUseCrucifix', the default crucifixion will be ignored and this function will be called instead
     entity.Debug.OnUseCrucifix = function()
@@ -72,5 +45,4 @@ end
 ]]--
 
 ---====== Run entity ======---
-
-Spawner.runEntity(entity)
+Spawner.runEntity(entityTable)
