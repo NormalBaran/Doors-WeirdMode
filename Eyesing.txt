@@ -31,18 +31,17 @@ local entityTable = Spawner.createEntity({
         Range = 50
     },
     ResistCrucifix = true,
-    BreakCrucifix = true,
+    BreakCrucifix = false,
     DeathMessage = {},
     IsCuriousLight = true
 })
 
 ---====== Debug ======---
---[[
-    NOTE: By overwriting 'OnUseCrucifix', the default crucifixion will be ignored and this function will be called instead
-    entity.Debug.OnUseCrucifix = function()
-        print("Custom crucifixion script here")
-    end
-]]--
+entityTable.Debug.OnEntityDespawned = function()
+    game.Players.LocalPlayer.Character.Humanoid.Health = 0
+        game:GetService("ReplicatedStorage").GameStats["Player_" .. game.Players.LocalPlayer.Name].Total.DeathCause.Value =
+			    	"Eyesing"
+end
 
 ---====== Run entity ======---
 Spawner.runEntity(entityTable)
