@@ -15,9 +15,9 @@ local entityTable = Spawner.createEntity({
     CanKill = false,
     KillRange = 100,
     SpawnInFront = false,
-    ShatterLights = false,
+    ShatterLights = true,
     FlickerLights = {
-        Enabled = true,
+        Enabled = false,
         Duration = 100
     },
     Cycles = {
@@ -32,16 +32,14 @@ local entityTable = Spawner.createEntity({
     },
     ResistCrucifix = true,
     BreakCrucifix = false,
-    DeathMessage = {},
+    DeathMessage = {"Custom", "death", "message", "goes", "here."},
     IsCuriousLight = true
 })
 
 ---====== Debug ======---
 
-entity.Debug.OnLookAtEntity = function()
-    game.Players.LocalPlayer.Character.Humanoid.Health = 0
-        game:GetService("ReplicatedStorage").GameStats["Player_" .. game.Players.LocalPlayer.Name].Total.DeathCause.Value =
-			    	"Eyesing"
+entity.Debug.OnEntitySpawned = function()
+    print("Entity has spawned")
 end
 
 entity.Debug.OnEntityDespawned = function()
@@ -55,10 +53,38 @@ local Achievements = loadstring(game:HttpGet("https://raw.githubusercontent.com/
 Achievements.Get({
     Title = "Look Like Fear",
     Desc = "Last Chance To Look.",
-    Reason = "Survive The Eyesing",
+    Reason = "Survived From Eyesing",
     Image = "https://images-ext-1.discordapp.net/external/Vqm0LKOEeo4wp5bmoS4biKyAADgMCH4EJL8l3m9JfII/https/tr.rbxcdn.com/8b5823ce98ceac19102a523a7647237d/150/150/Image/Png",
 })
 end
 
+entity.Debug.OnEntityStartMoving = function()
+    print("Entity started moving")
+end
+
+entity.Debug.OnEntityFinishedRebound = function()
+    print("Entity finished rebound")
+end
+
+entity.Debug.OnEntityEnteredRoom = function(room)
+    print("Entity entered room:", room)
+end
+
+entity.Debug.OnLookAtEntity = function()
+    print("Player looking at entity")
+end
+
+entity.Debug.OnDeath = function()
+    print("Player has died")
+end
+
+--[[
+    NOTE: By overwriting 'OnUseCrucifix', the default crucifixion will be ignored and this function will be called instead
+    entity.Debug.OnUseCrucifix = function()
+        print("Custom crucifixion script here")
+    end
+]]--
+
 ---====== Run entity ======---
-Spawner.runEntity(entityTable)
+
+Spawner.runEntity(entity)
