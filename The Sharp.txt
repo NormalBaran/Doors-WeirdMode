@@ -37,12 +37,15 @@ local entityTable = Spawner.createEntity({
 })
 
 ---====== Debug ======---
---[[
-    NOTE: By overwriting 'OnUseCrucifix', the default crucifixion will be ignored and this function will be called instead
     entity.Debug.OnUseCrucifix = function()
-        print("Custom crucifixion script here")
+    local Achievements = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
+    Achievements.Get({
+        Title = "Example Achievement",
+        Desc = "This is very cool.",
+        Reason = "You executed the example script.",
+        Image = "12912148272",
+})
     end
-]]--
 
 ---====== Run entity ======---
 Spawner.runEntity(entityTable)
