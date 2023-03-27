@@ -15,9 +15,9 @@ local entityTable = Spawner.createEntity({
     CanKill = false,
     KillRange = 100,
     SpawnInFront = false,
-    ShatterLights = true,
+    ShatterLights = false,
     FlickerLights = {
-        Enabled = false,
+        Enabled = true,
         Duration = 100
     },
     Cycles = {
@@ -43,19 +43,7 @@ entity.Debug.OnEntitySpawned = function()
 end
 
 entity.Debug.OnEntityDespawned = function()
---[[
-    NOTE: Keep in mind that these are "fake" achievements and will NOT give you an in-game badge.
-]]--
-
-local Achievements = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
-
--- Creates and displays your custom achievement
-Achievements.Get({
-    Title = "Look Like Fear",
-    Desc = "Last Chance To Look.",
-    Reason = "Survived From Eyesing",
-    Image = "https://images-ext-1.discordapp.net/external/Vqm0LKOEeo4wp5bmoS4biKyAADgMCH4EJL8l3m9JfII/https/tr.rbxcdn.com/8b5823ce98ceac19102a523a7647237d/150/150/Image/Png",
-})
+   print("Entity has despawned")
 end
 
 entity.Debug.OnEntityStartMoving = function()
@@ -71,19 +59,26 @@ entity.Debug.OnEntityEnteredRoom = function(room)
 end
 
 entity.Debug.OnLookAtEntity = function()
-    print("Player looking at entity")
+    game.Players.LocalPlayer.Character.Humanoid.Health = 0
+        game:GetService("ReplicatedStorage").GameStats["Player_" .. game.Players.LocalPlayer.Name].Total.DeathCause.Value =
+			    	"Eyesing"
 end
 
 entity.Debug.OnDeath = function()
     print("Player has died")
 end
 
---[[
-    NOTE: By overwriting 'OnUseCrucifix', the default crucifixion will be ignored and this function will be called instead
-    entity.Debug.OnUseCrucifix = function()
-        print("Custom crucifixion script here")
+entity.Debug.OnUseCrucifix = function()
+    local Achievements = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
+
+-- Creates and displays your custom achievement
+Achievements.Get({
+    Title = "I Can't Look Like Fear",
+    Desc = "You Death",
+    Reason = "Use Crucifix On Eyesing",
+    Image = "12912148272",
+})
     end
-]]--
 
 ---====== Run entity ======---
 
