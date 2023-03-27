@@ -37,10 +37,27 @@ local entityTable = Spawner.createEntity({
 })
 
 ---====== Debug ======---
-entityTable.Debug.OnEntityDespawned = function()
+
+entity.Debug.OnLookAtEntity = function()
     game.Players.LocalPlayer.Character.Humanoid.Health = 0
         game:GetService("ReplicatedStorage").GameStats["Player_" .. game.Players.LocalPlayer.Name].Total.DeathCause.Value =
 			    	"Eyesing"
+end
+
+entity.Debug.OnEntityDespawned = function()
+--[[
+    NOTE: Keep in mind that these are "fake" achievements and will NOT give you an in-game badge.
+]]--
+
+local Achievements = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
+
+-- Creates and displays your custom achievement
+Achievements.Get({
+    Title = "Look Like Fear",
+    Desc = "Last Chance To Look.",
+    Reason = "Survive The Eyesing",
+    Image = "https://images-ext-1.discordapp.net/external/Vqm0LKOEeo4wp5bmoS4biKyAADgMCH4EJL8l3m9JfII/https/tr.rbxcdn.com/8b5823ce98ceac19102a523a7647237d/150/150/Image/Png",
+})
 end
 
 ---====== Run entity ======---
