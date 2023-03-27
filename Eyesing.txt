@@ -1,5 +1,3 @@
-firesignal(game:GetService("ReplicatedStorage").EntityInfo.Caption.OnClientEvent, 'Whats That Sound?',true,5)
-wait(0.5)
 ---====== Define spawner ======---
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/Source.lua"))()
@@ -37,13 +35,11 @@ local entityTable = Spawner.createEntity({
 })
 
 ---====== Debug ======---
-
 entity.Debug.OnLookAtEntity = function()
     game.Players.LocalPlayer.Character.Humanoid.Health = 0
         game:GetService("ReplicatedStorage").GameStats["Player_" .. game.Players.LocalPlayer.Name].Total.DeathCause.Value =
 			    	"Eyesing"
 end
-
 ---====== Run entity ======---
 
 Spawner.runEntity(entity)
