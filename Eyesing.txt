@@ -1,0 +1,48 @@
+firesignal(game:GetService("ReplicatedStorage").EntityInfo.Caption.OnClientEvent, 'Whats That Sound?',true,5)
+wait(0.5)
+---====== Define spawner ======---
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/Source.lua"))()
+
+---====== Create entity ======---
+
+local entityTable = Spawner.createEntity({
+    CustomName = "Eyesing",
+    Model = "rbxassetid://12913890947",
+    Speed = 50,
+    MoveDelay = 5,
+    HeightOffset = 1,
+    CanKill = false,
+    KillRange = 100,
+    SpawnInFront = false,
+    ShatterLights = true,
+    FlickerLights = {
+        Enabled = true,
+        Duration = 100
+    },
+    Cycles = {
+        Min = 2,
+        Max = 5,
+        Delay = 2
+    },
+    CamShake = {
+        Enabled = true,
+        Values = {3.5, 20, 0.1, 1},
+        Range = 50
+    },
+    ResistCrucifix = true,
+    BreakCrucifix = true,
+    DeathMessage = {},
+    IsCuriousLight = true
+})
+
+---====== Debug ======---
+--[[
+    NOTE: By overwriting 'OnUseCrucifix', the default crucifixion will be ignored and this function will be called instead
+    entity.Debug.OnUseCrucifix = function()
+        print("Custom crucifixion script here")
+    end
+]]--
+
+---====== Run entity ======---
+Spawner.runEntity(entityTable)
