@@ -30,10 +30,10 @@ local entityTable = Spawner.createEntity({
         Values = {3.5, 20, 0.1, 1},
         Range = 50
     },
-    ResistCrucifix = true,
+    ResistCrucifix = false,
     BreakCrucifix = false,
     DeathMessage = {},
-    IsCuriousLight = true
+    IsCuriousLight = false
 })
 
 ---====== Debug ======---
@@ -45,7 +45,7 @@ local entityTable = Spawner.createEntity({
         Reason = "You executed the example script.",
         Image = "12912148272",
 })
-    end
+end
 
 ---====== Run entity ======---
 Spawner.runEntity(entityTable)
