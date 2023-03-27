@@ -6,14 +6,14 @@ local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/Regul
 
 local entity = Spawner.createEntity({
     CustomName = "Eyesing",
-    Model = "rbxassetid://12913890947", -- Your entity's model url here ("rbxassetid://1234567890" or GitHub raw url)
+    Model = "rbxassetid://12913890947",
     Speed = 50,
     MoveDelay = 1,
     HeightOffset = 0,
     CanKill = false,
     KillRange = 50,
     SpawnInFront = false,
-    ShatterLights = true,
+    ShatterLights = false,
     FlickerLights = {
         Enabled = true,
         Duration = 50
